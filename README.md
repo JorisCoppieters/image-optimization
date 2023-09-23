@@ -23,9 +23,9 @@ AWS CDK is an open-source software development framework used to define cloud in
 git clone https://github.com/aws-samples/image-optimization.git
 cd image-optimization
 npm install
-npx cdk bootstrap
+npx cdk bootstrap --profile services
 npm run build
-npx cdk deploy
+npx cdk deploy -c S3_IMAGE_BUCKET_NAME='possum-media' --profile services
 ```
 
 When the deployment is completed within minutes, the CDK output will include the domain name of the CloudFront distribution created for image optimization (ImageDeliveryDomain =YOURDISTRIBUTION.cloudfront.net). The stack will include an S3 bucket with sample images (OriginalImagesS3Bucket = YourS3BucketWithOriginalImagesGeneratedName). To verify that it is working properly, test the following optimized image URL https:// YOURDISTRIBUTION.cloudfront.net/images/rio/1.jpeg?format=auto&width=300.
@@ -37,7 +37,7 @@ Note that when deploying in production, it’s recommended to use an existing S3
 To remove cloud resources created for this solution, just execute the following command:
 
 ```
-npx cdk destroy
+npx cdk destroy --profile services
 ```
 
 ## License
